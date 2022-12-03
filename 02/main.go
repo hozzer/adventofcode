@@ -2,21 +2,21 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 )
 
 func main() {
-	file, err := os.Open("02.txt")
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
+	file, _ := os.Open("02.txt")
+	fmt.Println("Part one total:", part1(file))
+	file.Close()
 
-	part1(file)
-	part2(file)
+	file, _ = os.Open("02.txt")
+	fmt.Println("Part two total:", part2(file))
+	file.Close()
 }
 
-func part1(file *os.File) {
+func part1(file *os.File) int {
 	total := 0
 
 	scanner := bufio.NewScanner(file)
@@ -61,10 +61,10 @@ func part1(file *os.File) {
 		}
 	}
 
-	println(total)
+	return total
 }
 
-func part2(file *os.File) {
+func part2(file *os.File) int {
 	total := 0
 
 	scanner := bufio.NewScanner(file)
@@ -109,5 +109,5 @@ func part2(file *os.File) {
 		}
 	}
 
-	println(total)
+	return total
 }
